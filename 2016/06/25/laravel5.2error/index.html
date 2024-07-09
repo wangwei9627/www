@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Larave中间件新特性与解决验证时出现的各种错误 | 吉吉博客 | 思考与成长</title>
+  <meta name="description" content="自我管理|知识管理|时间管理|阅读" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="吉吉博客 | 思考与成长">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/05/04/swooleInstall/">swoole安装</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/13/C1/">C语言学习</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/09/21/git/">git的安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/02/redis/">Redis 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/22/nodejs/">安装nodejs</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/07/composer/">composer 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/03/23/markdown/">markdown</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/blog/">&nbsp;&nbsp;&nbsp;blog</a>
+                                    <small>16</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/linux/">&nbsp;&nbsp;&nbsp;linux</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C/">&nbsp;&nbsp;&nbsp;C</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Larave/">&nbsp;&nbsp;&nbsp;Larave</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Mysql数据库优化/">&nbsp;&nbsp;&nbsp;Mysql数据库优化</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/OpenResty/">&nbsp;&nbsp;&nbsp;OpenResty</a>
+                                    <small>3</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ab/">&nbsp;&nbsp;&nbsp;ab</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/composer/">&nbsp;&nbsp;&nbsp;composer</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/gulp/">&nbsp;&nbsp;&nbsp;gulp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/lnmp/">&nbsp;&nbsp;&nbsp;lnmp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/markdown/">&nbsp;&nbsp;&nbsp;markdown</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/redis/">&nbsp;&nbsp;&nbsp;redis</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/shell/">&nbsp;&nbsp;&nbsp;shell</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/svn/">&nbsp;&nbsp;&nbsp;svn</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/swoole/">&nbsp;&nbsp;&nbsp;swoole</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/vagrant/">&nbsp;&nbsp;&nbsp;vagrant</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/cuijiji">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                
+                    <a  data-pjax href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                
+                    <a  data-pjax href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                
+                    <a  data-pjax href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                
+                    <a  data-pjax href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                
+                    <a  data-pjax href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                
+                    <a  data-pjax href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                
+                    <a  data-pjax href="/2016/05/04/swooleInstall/">swoole安装</a>
+                
+                    <a  data-pjax href="/2016/03/13/C1/">C语言学习</a>
+                
+                    <a  data-pjax href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                
+                    <a  data-pjax href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                
+                    <a  data-pjax href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                
+                    <a  data-pjax href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                
+                    <a  data-pjax href="/2015/09/21/git/">git的安装与使用</a>
+                
+                    <a  data-pjax href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                
+                    <a  data-pjax href="/2015/08/02/redis/">Redis 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/06/22/nodejs/">安装nodejs</a>
+                
+                    <a  data-pjax href="/2015/06/07/composer/">composer 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/03/23/markdown/">markdown</a>
+                
+                
+                    <a data-pjax href="/categories/blog/">&nbsp;&nbsp;blog</a>
+                
+                    <a data-pjax href="/categories/linux/">&nbsp;&nbsp;linux</a>
+                
+                
+                    <a data-pjax href="/tags/C/">&nbsp;&nbsp;C</a>
+                
+                    <a data-pjax href="/tags/Larave/">&nbsp;&nbsp;Larave</a>
+                
+                    <a data-pjax href="/tags/Mysql数据库优化/">&nbsp;&nbsp;Mysql数据库优化</a>
+                
+                    <a data-pjax href="/tags/OpenResty/">&nbsp;&nbsp;OpenResty</a>
+                
+                    <a data-pjax href="/tags/ab/">&nbsp;&nbsp;ab</a>
+                
+                    <a data-pjax href="/tags/composer/">&nbsp;&nbsp;composer</a>
+                
+                    <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/gulp/">&nbsp;&nbsp;gulp</a>
+                
+                    <a data-pjax href="/tags/lnmp/">&nbsp;&nbsp;lnmp</a>
+                
+                    <a data-pjax href="/tags/markdown/">&nbsp;&nbsp;markdown</a>
+                
+                    <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
+                
+                    <a data-pjax href="/tags/redis/">&nbsp;&nbsp;redis</a>
+                
+                    <a data-pjax href="/tags/shell/">&nbsp;&nbsp;shell</a>
+                
+                    <a data-pjax href="/tags/svn/">&nbsp;&nbsp;svn</a>
+                
+                    <a data-pjax href="/tags/swoole/">&nbsp;&nbsp;swoole</a>
+                
+                    <a data-pjax href="/tags/vagrant/">&nbsp;&nbsp;vagrant</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">吉吉博客 | 思考与成长</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">Larave中间件新特性与解决验证时出现的各种错误</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/Larave/' style='color:#D5D5D5'>Larave</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Larave中间件新特性与解决验证时出现的各种错误</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2016-06-25T09:31:11.000Z"
+                              itemprop="datePublished">2016-06-25</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>我有一些麻烦在关于laravel5.2的验证上；和正常的写代码一样，我在验证的时候加上了error;<br>但是一刷新页面出现了这个错误。</p>
+<pre><code>Undefined variable: errors
+</code></pre><h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>首先我想到的就是变量问题，便去查询，去掌管error的文件中去查看，所以打开 <strong>app/Http/Kernel.php</strong><br>看到的是这样的<br>    protected $middleware = [<br>    \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,<br>    ];</p>
+<pre><code>protected $middlewareGroups = [
+&apos;web&apos; =&gt; [
+    \App\Http\Middleware\EncryptCookies::class,
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \App\Http\Middleware\VerifyCsrfToken::class,
+],
+
+&apos;api&apos; =&gt; [
+    &apos;throttle:60,1&apos;,
+],
+];
+</code></pre><p> 上来就懵圈了，因为这种写法明显是之前没有的，果断查看了下，原来是5.2的新特性！那么之前是什么样的呢我们再来看一下</p>
+<pre><code> protected $middleware = [
+    \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    \App\Http\Middleware\EncryptCookies::class,
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \App\Http\Middleware\VerifyCsrfToken::class,
+];
+</code></pre><p>这数组是你应用程序的全局HTTP中间件堆栈。换句话说，他们在每一个请求上运行。在这个特殊的中间件：<br>而 <strong>Illuminate\View\Middleware\ShareErrorsFromSession</strong> 这是每一个请求增加了$error的变量。</p>
+<p>我们重新看下5.2的那部分：<br>全局的中间件堆栈现在只检查维护。您现在有一个叫做“WEB”的中间件组，其包含一大部分的前一个全局中间件。请记住，它是这样的，允许在同一个应用程序中的一个网络用户界面和一个接口。</p>
+<h5 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h5><p>这也就是问题出现的原因了，那么我们如何得到这个 <strong>error</strong> 的变量<br>在您的路由文件中，您需要在“WEB”的中间件组中添加您的路由，以访问每个请求中的错误变量。像这样：</p>
+<pre><code>Route::group([&apos;middleware&apos; =&gt; [&apos;web&apos;]], function () {
+    // Add your routes here
+});
+</code></pre><h5 id="附加问题"><a href="#附加问题" class="headerlink" title="附加问题"></a>附加问题</h5><p>如果你还出现以下报错</p>
+<pre><code>RuntimeException in EncryptionServiceProvider.php
+</code></pre><p>在终端中根目录下执行：</p>
+<pre><code>php artisan key:generate
+</code></pre><p>回来刷新下试试！</p>
+<h5 id="利用这个新特性来自己定义使用中间件组"><a href="#利用这个新特性来自己定义使用中间件组" class="headerlink" title="利用这个新特性来自己定义使用中间件组"></a>利用这个新特性来自己定义使用中间件组</h5>
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2016/07/01/shell/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2016/06/22/oprestyTwo/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 吉吉博客 | 思考与成长 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

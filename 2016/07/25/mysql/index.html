@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Mysql数据库优化 | 吉吉博客 | 思考与成长</title>
+  <meta name="description" content="自我管理|知识管理|时间管理|阅读" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="吉吉博客 | 思考与成长">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/05/04/swooleInstall/">swoole安装</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/13/C1/">C语言学习</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/09/21/git/">git的安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/02/redis/">Redis 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/22/nodejs/">安装nodejs</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/07/composer/">composer 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/03/23/markdown/">markdown</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/blog/">&nbsp;&nbsp;&nbsp;blog</a>
+                                    <small>16</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/linux/">&nbsp;&nbsp;&nbsp;linux</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C/">&nbsp;&nbsp;&nbsp;C</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Larave/">&nbsp;&nbsp;&nbsp;Larave</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Mysql数据库优化/">&nbsp;&nbsp;&nbsp;Mysql数据库优化</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/OpenResty/">&nbsp;&nbsp;&nbsp;OpenResty</a>
+                                    <small>3</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ab/">&nbsp;&nbsp;&nbsp;ab</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/composer/">&nbsp;&nbsp;&nbsp;composer</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/gulp/">&nbsp;&nbsp;&nbsp;gulp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/lnmp/">&nbsp;&nbsp;&nbsp;lnmp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/markdown/">&nbsp;&nbsp;&nbsp;markdown</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/redis/">&nbsp;&nbsp;&nbsp;redis</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/shell/">&nbsp;&nbsp;&nbsp;shell</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/svn/">&nbsp;&nbsp;&nbsp;svn</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/swoole/">&nbsp;&nbsp;&nbsp;swoole</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/vagrant/">&nbsp;&nbsp;&nbsp;vagrant</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/cuijiji">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                
+                    <a  data-pjax href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                
+                    <a  data-pjax href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                
+                    <a  data-pjax href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                
+                    <a  data-pjax href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                
+                    <a  data-pjax href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                
+                    <a  data-pjax href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                
+                    <a  data-pjax href="/2016/05/04/swooleInstall/">swoole安装</a>
+                
+                    <a  data-pjax href="/2016/03/13/C1/">C语言学习</a>
+                
+                    <a  data-pjax href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                
+                    <a  data-pjax href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                
+                    <a  data-pjax href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                
+                    <a  data-pjax href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                
+                    <a  data-pjax href="/2015/09/21/git/">git的安装与使用</a>
+                
+                    <a  data-pjax href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                
+                    <a  data-pjax href="/2015/08/02/redis/">Redis 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/06/22/nodejs/">安装nodejs</a>
+                
+                    <a  data-pjax href="/2015/06/07/composer/">composer 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/03/23/markdown/">markdown</a>
+                
+                
+                    <a data-pjax href="/categories/blog/">&nbsp;&nbsp;blog</a>
+                
+                    <a data-pjax href="/categories/linux/">&nbsp;&nbsp;linux</a>
+                
+                
+                    <a data-pjax href="/tags/C/">&nbsp;&nbsp;C</a>
+                
+                    <a data-pjax href="/tags/Larave/">&nbsp;&nbsp;Larave</a>
+                
+                    <a data-pjax href="/tags/Mysql数据库优化/">&nbsp;&nbsp;Mysql数据库优化</a>
+                
+                    <a data-pjax href="/tags/OpenResty/">&nbsp;&nbsp;OpenResty</a>
+                
+                    <a data-pjax href="/tags/ab/">&nbsp;&nbsp;ab</a>
+                
+                    <a data-pjax href="/tags/composer/">&nbsp;&nbsp;composer</a>
+                
+                    <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/gulp/">&nbsp;&nbsp;gulp</a>
+                
+                    <a data-pjax href="/tags/lnmp/">&nbsp;&nbsp;lnmp</a>
+                
+                    <a data-pjax href="/tags/markdown/">&nbsp;&nbsp;markdown</a>
+                
+                    <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
+                
+                    <a data-pjax href="/tags/redis/">&nbsp;&nbsp;redis</a>
+                
+                    <a data-pjax href="/tags/shell/">&nbsp;&nbsp;shell</a>
+                
+                    <a data-pjax href="/tags/svn/">&nbsp;&nbsp;svn</a>
+                
+                    <a data-pjax href="/tags/swoole/">&nbsp;&nbsp;swoole</a>
+                
+                    <a data-pjax href="/tags/vagrant/">&nbsp;&nbsp;vagrant</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">吉吉博客 | 思考与成长</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">Mysql数据库优化</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/Mysql数据库优化/' style='color:#D5D5D5'>Mysql数据库优化</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Mysql数据库优化</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2016-07-25T19:01:21.000Z"
+                              itemprop="datePublished">2016-07-25</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h4 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h4><ul>
+<li>数据库的演变过程</li>
+<li>数据库主从</li>
+<li>数据库双机热备</li>
+<li>数据库负载均衡</li>
+<li>数据库读写分离</li>
+<li>谈谈数据库的架构</li>
+</ul>
+<h4 id="数据库的演变过程"><a href="#数据库的演变过程" class="headerlink" title="数据库的演变过程"></a>数据库的演变过程</h4><p><strong>单主机模式</strong></p>
+<blockquote>
+<p>   最开始网站一般都是由典型的LAMP架构演变而来的，一般都是一台linux主机 包括apache服务器，php执行环境以及MySQL服务器，一般情况下，这些都在一台虚拟主机上，简称单主机模式</p>
+</blockquote>
+<p><strong>缺点</strong></p>
+<ul>
+<li>web服务器和mysql服务器公用一台主机，共享硬件资源，可能存在某一方资源征用太大，导致整个应用产生瓶颈 {:&amp;.zoomIn}</li>
+<li>当业务增长之后，没有办法做到横向扩展</li>
+<li>容错性太差，一旦主机存在问题，整个应用不可用</li>
+</ul>
+<p><strong>独立主机模式</strong></p>
+<blockquote>
+<p>   随着业务的发展，可以把mysql服务器和web服务器主机分开，分别部署，就是独立主机模式。<br>   独立主机模式下，web服务器和mysql不再共享硬件资源，分别部署。没有把鸡蛋放在一个篮子里面，增加了容错性。如果只是mysql服务器故障，那么对于web上不访问服务器的应用是不会受到影响的。而且web服务器可以做到横向扩展，如果web服务器性能不够，可以增加多台web服务器，进行负载均衡，分散web服务器的压力</p>
+</blockquote>
+<p><strong>缺点</strong></p>
+<ul>
+<li>可扩展性问题：虽然web服务器可以做到横向扩展，但是mysql服务器是没有办法做到横向扩展的 {:&amp;.bounceIn}</li>
+<li>可用性问题：mysql服务器存在单点问题，一旦mysql服务器宕机，对影响的影响很大</li>
+<li>性能问题：单台mysql服务器能够支撑的服务是有限的</li>
+</ul>
+<p><strong>主从数据库 and 读写分离</strong></p>
+<ul>
+<li>数据库的压力会越来越大，单数据库慢慢的就不能满足需求了，可以把mysql服务器分成主从数据库分担压力 {:&amp;.zoomIn}</li>
+<li>一般网站对数据实时性要求不高，就会慢慢发展读写分离模式，对于普通的查询请求，分配到读库，对于修改请求，在主库上完成。对于读库，由于是无状态的，可以做到横向扩展。对于写库，还只能是单台主机</li>
+</ul>
+<p><strong>好处</strong></p>
+<ul>
+<li>实现服务器负载均衡  {:&amp;.bounceIn}</li>
+<li>通过复制实现数据的异地备份</li>
+<li>提高数据库系统的可用性</li>
+</ul>
+<h4 id="主从数据库"><a href="#主从数据库" class="headerlink" title="主从数据库"></a>主从数据库</h4><p><strong>工作原理是什么 ？？？</strong></p>
+<ul>
+<li>主服务器凡运行语句,都产生一个二进制日志 binlog {:&amp;.zoomIn}</li>
+<li>从服务器不断读取主服务器的binlog</li>
+<li>从主服务读取到的binlog,转换为自身可执行的relaylog</li>
+<li>执行relaylog</li>
+</ul>
+<p><strong>实现步骤:</strong></p>
+<ul>
+<li>首先确保主服务器打开二进制日志功能.这样,主服务器一旦有数据变化,立即产生二进制日志. {:&amp;.zoomIn}</li>
+<li>从服务器也需要开启二进制日志和relay日志功能.这样可以从主服务器读取binlog,并产生relaylog</li>
+<li>在主服务器建立一个从服务器的账号,并授予权限</li>
+<li>指定从服务对应的主服务器,开启从服务器</li>
+</ul>
+<p><strong>配置master主机:</strong></p>
+<pre><code>vim /etc/my.cnf
+#开启二进制日志
+log-bin=master-bin
+#指定日志格式mixed/row/statement 磁盘row/语句
+binlog-format=mixed
+server-id=30
+</code></pre><p><strong>配置slave主机:</strong></p>
+<pre><code>vim /etc/my.cnf
+#中继日志
+relay-log=slave-bin
+server-id=31
+</code></pre><p><strong>分别启动两台服务器</strong></p>
+<pre><code>service mysqld restart
+</code></pre><p><strong>让两台服务器建立联系在 ，主服务器上创建相应的复制账号</strong></p>
+<pre><code>GRANT REPLICATION SLAVE,
+
+REPLICATION CLIENT ON *.*
+
+TO &apos;cuizhe&apos;@&apos;192.168.20.%&apos;
+
+IDENTIFIED BY &apos;cuijiji&apos;;
+</code></pre><p><strong>在从服务器通过语句指定要复制的主服务器(注意,可以一主多从,不可一从多主).</strong></p>
+<pre><code>change master to master_host=&apos;192.168.20.30&apos;,
+master_user=&apos;cuizhe&apos;,master_password=&apos;cuijiji&apos;,
+master_log_file=&apos;master-bin.000001&apos;,
+master_log_pos=285;
+start slave;
+</code></pre><h4 id="双机热备概念与作用"><a href="#双机热备概念与作用" class="headerlink" title="双机热备概念与作用"></a>双机热备概念与作用</h4><ul>
+<li>通俗说法主主复制 </li>
+<li>保持两个数据库的状态自动同步。对任何一个数据库的操作都自动应用到另外一个数据库，始终保持两个数据库数据一致</li>
+<li>可以做灾备，其中一个坏了可以切换到另一个</li>
+<li>可以做负载均衡，可以将请求分摊到其中任何一台上，提高网站吞吐量。  对于异地热备，尤其适合灾备</li>
+</ul>
+<p><strong>如何解决主键冲突</strong></p>
+<ul>
+<li>让1台服务器  1,3,5,7来增长</li>
+<li>另1台服务器  2,4,6,8来增长</li>
+</ul>
+<p><strong>实现步骤</strong></p>
+<p>分别从本次与全局进行修改</p>
+<p>一台服务器：</p>
+<pre><code>set global auto_increment_increment = 2; 
+set global auto_increment_offset = 1; 
+set session auto_increment_increment = 2;
+set session auto_increment_offset = 1; 
+</code></pre><p>另一台服务器：</p>
+<pre><code>set global auto_increment_increment = 2;
+set global auto_increment_offset = 2; 
+set session auto_increment_increment=2;
+set session auto_increment_offset = 2;  
+</code></pre><p><strong>注：auto-increment-increment 和　auto-increment-offset　要写到配置文件　中，防止下次重启后失效</strong></p>
+<p><strong>问题又来了</strong></p>
+<ul>
+<li>如果因为业务需要又增加一台服务器呢？</li>
+<li>如果因为业务需要又增加十台服务器呢？</li>
+</ul>
+<p><strong>如果一个主数据库挂掉！ 咋整？</strong></p>
+<ul>
+<li>只需要将一台服务器配置文件加入 read-only=1即可 {:&amp;.zoomIn}</li>
+<li>挂了 注释掉即可使用！</li>
+</ul>
+<h4 id="数据库的读写分离与负载均衡"><a href="#数据库的读写分离与负载均衡" class="headerlink" title="数据库的读写分离与负载均衡"></a>数据库的读写分离与负载均衡</h4><p><strong>如何实现？</strong></p>
+<ul>
+<li>一般用两种方法 {:&amp;.zoomIn}</li>
+<li>1: 直接在PHP的mysql类做判断,最简单,不用额外加软件。比如discuz论坛.</li>
+<li>2: 用集群中间件.官方的mysql_proxy 比较流行的 kingshard</li>
+<li>kingshard地址 <a href="https://github.com/flike/kingshard/blob/master/README_ZH.md" target="_blank" rel="external">https://github.com/flike/kingshard/blob/master/README_ZH.md</a></li>
+</ul>
+<p><strong>首先利用mysql_proxy实现负载均衡</strong></p>
+<ul>
+<li>下载安装mysql_proxy {:&amp;.zoomIn}</li>
+<li>wget <a href="http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-Proxy/mysql-proxy-0.8.3-linux-glibc2.3-x86-64bit.tar.gz" target="_blank" rel="external">http://ftp.ntu.edu.tw/pub/MySQL/Downloads/MySQL-Proxy/mysql-proxy-0.8.3-linux-glibc2.3-x86-64bit.tar.gz</a></li>
+<li>查看帮助 ./bin/mysql-proxy –help-all</li>
+</ul>
+<p><strong>注意两点</strong></p>
+<ul>
+<li>proxy在哪个端口运行</li>
+<li>代理的是那几台服务器 </li>
+</ul>
+<p>指定代理代理的服务器</p>
+<pre><code>./bin/mysql-proxy \
+--proxy-backend-addresses=192.168.31.165:3306 \
+--proxy-backend-addresses=192.168.31.145:3306
+</code></pre><p><strong>测试说明一个问题</strong></p>
+<blockquote>
+<p>负载是连接级别的 不是语句级别的！！！</p>
+</blockquote>
+<p><strong>读写分离操作</strong></p>
+<pre><code>./bin/mysql-proxy  \
+--proxy-backend-addresses=192.168.31.165:3306 \ #配置写服务器
+--proxy-read-only-backend-addresses=192.168.31.145:3306 \ #配置读服务器
+--proxy-lua-script=mysql-proxy/share/doc/mysql-proxy/rw-splitting.lua #利用这个脚本
+</code></pre><p><strong>简写</strong></p>
+<pre><code>./bin/mysql-proxy -b 192.168.31.165:3306 \
+-r 192.168.31.145:3306 \
+-s /root/mysql-proxy-0.8.3-linux-glibc2.3-x86-64bit/share/doc/mysql-proxy/rw-splitting.lua
+</code></pre>
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2016/08/11/lnmp/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2016/07/01/shell/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 吉吉博客 | 思考与成长 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

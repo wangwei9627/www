@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>性能压力测试工具ab | 吉吉博客 | 思考与成长</title>
+  <meta name="description" content="自我管理|知识管理|时间管理|阅读" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="吉吉博客 | 思考与成长">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/05/04/swooleInstall/">swoole安装</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/13/C1/">C语言学习</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/09/21/git/">git的安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/02/redis/">Redis 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/22/nodejs/">安装nodejs</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/07/composer/">composer 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/03/23/markdown/">markdown</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/blog/">&nbsp;&nbsp;&nbsp;blog</a>
+                                    <small>16</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/linux/">&nbsp;&nbsp;&nbsp;linux</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C/">&nbsp;&nbsp;&nbsp;C</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Larave/">&nbsp;&nbsp;&nbsp;Larave</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Mysql数据库优化/">&nbsp;&nbsp;&nbsp;Mysql数据库优化</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/OpenResty/">&nbsp;&nbsp;&nbsp;OpenResty</a>
+                                    <small>3</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ab/">&nbsp;&nbsp;&nbsp;ab</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/composer/">&nbsp;&nbsp;&nbsp;composer</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/gulp/">&nbsp;&nbsp;&nbsp;gulp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/lnmp/">&nbsp;&nbsp;&nbsp;lnmp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/markdown/">&nbsp;&nbsp;&nbsp;markdown</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/redis/">&nbsp;&nbsp;&nbsp;redis</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/shell/">&nbsp;&nbsp;&nbsp;shell</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/svn/">&nbsp;&nbsp;&nbsp;svn</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/swoole/">&nbsp;&nbsp;&nbsp;swoole</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/vagrant/">&nbsp;&nbsp;&nbsp;vagrant</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/cuijiji">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                
+                    <a  data-pjax href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                
+                    <a  data-pjax href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                
+                    <a  data-pjax href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                
+                    <a  data-pjax href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                
+                    <a  data-pjax href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                
+                    <a  data-pjax href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                
+                    <a  data-pjax href="/2016/05/04/swooleInstall/">swoole安装</a>
+                
+                    <a  data-pjax href="/2016/03/13/C1/">C语言学习</a>
+                
+                    <a  data-pjax href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                
+                    <a  data-pjax href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                
+                    <a  data-pjax href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                
+                    <a  data-pjax href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                
+                    <a  data-pjax href="/2015/09/21/git/">git的安装与使用</a>
+                
+                    <a  data-pjax href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                
+                    <a  data-pjax href="/2015/08/02/redis/">Redis 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/06/22/nodejs/">安装nodejs</a>
+                
+                    <a  data-pjax href="/2015/06/07/composer/">composer 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/03/23/markdown/">markdown</a>
+                
+                
+                    <a data-pjax href="/categories/blog/">&nbsp;&nbsp;blog</a>
+                
+                    <a data-pjax href="/categories/linux/">&nbsp;&nbsp;linux</a>
+                
+                
+                    <a data-pjax href="/tags/C/">&nbsp;&nbsp;C</a>
+                
+                    <a data-pjax href="/tags/Larave/">&nbsp;&nbsp;Larave</a>
+                
+                    <a data-pjax href="/tags/Mysql数据库优化/">&nbsp;&nbsp;Mysql数据库优化</a>
+                
+                    <a data-pjax href="/tags/OpenResty/">&nbsp;&nbsp;OpenResty</a>
+                
+                    <a data-pjax href="/tags/ab/">&nbsp;&nbsp;ab</a>
+                
+                    <a data-pjax href="/tags/composer/">&nbsp;&nbsp;composer</a>
+                
+                    <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/gulp/">&nbsp;&nbsp;gulp</a>
+                
+                    <a data-pjax href="/tags/lnmp/">&nbsp;&nbsp;lnmp</a>
+                
+                    <a data-pjax href="/tags/markdown/">&nbsp;&nbsp;markdown</a>
+                
+                    <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
+                
+                    <a data-pjax href="/tags/redis/">&nbsp;&nbsp;redis</a>
+                
+                    <a data-pjax href="/tags/shell/">&nbsp;&nbsp;shell</a>
+                
+                    <a data-pjax href="/tags/svn/">&nbsp;&nbsp;svn</a>
+                
+                    <a data-pjax href="/tags/swoole/">&nbsp;&nbsp;swoole</a>
+                
+                    <a data-pjax href="/tags/vagrant/">&nbsp;&nbsp;vagrant</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">吉吉博客 | 思考与成长</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">性能压力测试工具ab</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/ab/' style='color:#D5D5D5'>ab</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">性能压力测试工具ab</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2016-02-19T16:02:52.000Z"
+                              itemprop="datePublished">2016-02-19</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h3 id="1、命令原理"><a href="#1、命令原理" class="headerlink" title="1、命令原理"></a>1、命令原理</h3><p>ab是apachebench命令的缩写</p>
+<p>ab命令会创建很多的并发访问线程，模拟多个访问者同时对某一URL地址进行访问。它的测试目标是基于URL的，因此可以测试各种web服务器如apache、nginx、IIS等的压力。</p>
+<p>ab命令对发出负载的计算机要求很低，不会占用很高的CPU和内存，但却可以给目标服务器巨大的负载，原理类似于CC，自己测试时需注意。</p>
+<h3 id="2、命令的安装"><a href="#2、命令的安装" class="headerlink" title="2、命令的安装"></a>2、命令的安装</h3><p>ab的安装非常简单，安装apache之后默认就有，源码安装的apache命令目录为/usr/local/apache2/bin/ab。</p>
+<blockquote>
+<p>如果不想安装apache但是又想使用ab命令的话，我们可以直接安装apache的工具包httpd-tools。yum -y install httpd-tools</p>
+</blockquote>
+<h3 id="3、ab性能指标"><a href="#3、ab性能指标" class="headerlink" title="3、ab性能指标"></a>3、ab性能指标</h3><p>在进行性能测试过程中有几个指标比较重要</p>
+<ul>
+<li>1、吞吐率（Requests per second）</li>
+</ul>
+<blockquote>
+<p>服务器并发处理能力的量化描述，单位是reqs/s，指的是在某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大请求数，称之为最大吞吐率。</p>
+<p>记住：吞吐率是基于并发用户数的。这句话代表了两个含义：</p>
+<p>a、吞吐率和并发用户数相关</p>
+<p>b、不同的并发用户数下，吞吐率一般是不同的</p>
+<p>计算公式：总请求数/处理完成这些请求数所花费的时间，即</p>
+<p>Request per second=Complete requests/Time taken for tests</p>
+<p>必须要说明的是，这个数值表示当前机器的整体性能，值越大越好。</p>
+</blockquote>
+<ul>
+<li>2、并发连接数（The number of concurrent connections）</li>
+</ul>
+<blockquote>
+<p>并发连接数指的是某个时刻服务器所接受的请求数目，简单的讲，就是一个会话。</p>
+</blockquote>
+<ul>
+<li>3、并发用户数（Concurrency Level）</li>
+</ul>
+<blockquote>
+<p>要注意区分这个概念和并发连接数之间的区别，一个用户可能同时会产生多个会话，也即连接数。在HTTP/1.1下，IE7支持两个并发连接，IE8支持6个并发连接，FireFox3支持4个并发连接，所以相应的，我们的并发用户数就得除以这个基数。</p>
+</blockquote>
+<ul>
+<li>4、用户平均请求等待时间（Time per request）</li>
+</ul>
+<blockquote>
+<p>计算公式：处理完成所有请求数所花费的时间/（总请求数/并发用户数），即：</p>
+<p>Time per request=Time taken for tests/（Complete requests/Concurrency Level）</p>
+</blockquote>
+<ul>
+<li>5、服务器平均请求等待时间（Time per request:across all concurrent requests）</li>
+</ul>
+<blockquote>
+<p>计算公式：处理完成所有请求数所花费的时间/总请求数，即：</p>
+<p>Time taken for/testsComplete requests</p>
+<p>可以看到，它是吞吐率的倒数。</p>
+<p>同时，它也等于用户平均请求等待时间/并发用户数，即</p>
+<p>Time per request/Concurrency Level</p>
+</blockquote>
+<h3 id="4、参数说明"><a href="#4、参数说明" class="headerlink" title="4、参数说明"></a>4、参数说明</h3><p>格式： ab options http:// hostname :port /path</p>
+<p>参数详解</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+<th>解释</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>requests</td>
+<td>Number of requests to perform</td>
+<td>在测试会话中所执行的请求个数（本次测试总共要访问页面的次数）。默认时，仅执行一个请求。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>concurrency</td>
+<td>Number of multiple requests to make</td>
+<td>一次产生的请求个数（并发数）。默认是一次一个</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>timelimit</td>
+<td>Seconds to max. wait for responses</td>
+<td>测试所进行的最大秒数。其内部隐含值是-n 50000。它可以使对服务器的测试限制在一个固定的总时间以内。默认时，没有时间限制。</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>windowsize</td>
+<td>Size of TCP send/receive buffer, in bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>-p</td>
+<td>postfile</td>
+<td>File containing data to POST. Remember also to set -T</td>
+<td>包含了需要POST的数据的文件，文件格式如“p1=1&amp;p2=2”.使用方法是 -p 111.txt 。 （配合-T）</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>putfile</td>
+<td>File containing data to PUT. Remember also to set -T</td>
+<td></td>
+</tr>
+<tr>
+<td>-T</td>
+<td>content-type</td>
+<td>Content-type header for POSTing, eg.’application/x-www-form-urlencoded’Default is ‘text/plain’</td>
+<td>POST数据所使用的Content-type头信息，如 -T “application/x-www-form-urlencoded” 。 （配合-p）</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>verbosity</td>
+<td>How much troubleshooting info to print</td>
+<td>设置显示信息的详细程度 – 4或更大值会显示头信息， 3或更大值可以显示响应代码(404, 200等), 2或更大值可以显示警告和其他信息。 -V 显示版本号并退出。</td>
+</tr>
+<tr>
+<td>-w</td>
+<td></td>
+<td>Print out results in HTML tables</td>
+<td>以HTML表的格式输出结果。默认时，它是白色背景的两列宽度的一张表。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td></td>
+<td>Use HEAD instead of GET</td>
+<td>执行HEAD请求，而不是GET。</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>attributes</td>
+<td>String to insert as table attributes</td>
+<td></td>
+</tr>
+<tr>
+<td>-y</td>
+<td>attributes</td>
+<td>String to insert as tr attributes</td>
+<td></td>
+</tr>
+<tr>
+<td>-z</td>
+<td>attributes</td>
+<td>String to insert as td or th attributes</td>
+<td></td>
+</tr>
+<tr>
+<td>-C</td>
+<td>attribute</td>
+<td>Add cookie, eg. ‘Apache=1234. (repeatable)</td>
+<td>-C cookie-name=value 对请求附加一个Cookie:行。其典型形式是name=value的一个参数对。此参数可以重复，用逗号分割。提示：可以借助session实现原理传递 JSESSIONID参数， 实现保持会话的功能，如-C ” c1=1234,c2=2,c3=3, JSESSIONID=1111 。</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>attribute</td>
+<td>Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’Inserted after all normal header lines. (repeatable)</td>
+<td></td>
+</tr>
+<tr>
+<td>-A</td>
+<td>attribute</td>
+<td>Add Basic WWW Authentication, the attributes are a colon separated username and password.</td>
+<td></td>
+</tr>
+<tr>
+<td>-P</td>
+<td>attribute</td>
+<td>Add Basic Proxy Authentication, the attributes are a colon separated username and password.</td>
+<td>proxy-auth-username:password 对一个中转代理提供BASIC认证信任。用户名和密码由一个:隔开，并以base64编码形式发送。无论服务器是否需要(即, 是否发送了401认证需求代码)，此字符串都会被发送。</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>proxy:port</td>
+<td>Proxyserver and port number to use</td>
+<td></td>
+</tr>
+<tr>
+<td>-V</td>
+<td></td>
+<td>Print version number and exit</td>
+<td></td>
+</tr>
+<tr>
+<td>-k</td>
+<td></td>
+<td>Use HTTP KeepAlive feature</td>
+<td></td>
+</tr>
+<tr>
+<td>-d</td>
+<td></td>
+<td>Do not show percentiles served table.</td>
+<td></td>
+</tr>
+<tr>
+<td>-S</td>
+<td></td>
+<td>Do not show confidence estimators and warnings.</td>
+<td></td>
+</tr>
+<tr>
+<td>-g</td>
+<td>filename</td>
+<td>Output collected data to gnuplot format file.</td>
+<td></td>
+</tr>
+<tr>
+<td>-e</td>
+<td>filename</td>
+<td>Output CSV file with percentages served</td>
+<td></td>
+</tr>
+<tr>
+<td>-r</td>
+<td></td>
+<td>Don’t exit on socket receive errors.</td>
+<td></td>
+</tr>
+<tr>
+<td>-h</td>
+<td></td>
+<td>Display usage information (this message)</td>
+<td>设置属性的字符串. 缺陷程序中有各种静态声明的固定长度的缓冲区。另外，对命令行参数、服务器的响应头和其他外部输入的解析也很简单，这可能会有不良后果。它没有完整地实现 HTTP/1.x; 仅接受某些’预想’的响应格式。 strstr(3)的频繁使用可能会带来性能问题，即你可能是在测试ab而不是服务器的性能。</td>
+</tr>
+<tr>
+<td>-Z</td>
+<td>ciphersuite</td>
+<td>Specify SSL/TLS cipher suite (See openssl ciphers)</td>
+<td></td>
+</tr>
+<tr>
+<td>-f</td>
+<td>protocol</td>
+<td>Specify SSL/TLS protocol (SSL2, SSL3, TLS1, or ALL)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5、用法详解"><a href="#5、用法详解" class="headerlink" title="5、用法详解"></a>5、用法详解</h3><p>ab的参数很多，一般我们用-c 和-n参数就可以了，例如：</p>
+<blockquote>
+<p>-n后面的4000代表总共发出4000个请求，-c后面的1000表示采用1000个并发（模拟1000个人同时访问），后面的地址表示测试的目标URL。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 4000 -c 1000 http://192.168.35.2/</span><br></pre></td></tr></table></figure>
+<p>稍等一会得到类似如下的显示结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[root@vagrant-centos65 ~]# ab -n 4000 -c 1000 http://192.168.35.2/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking 192.168.35.2 (be patient)</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 1200 requests</span><br><span class="line">Completed 1600 requests</span><br><span class="line">Completed 2000 requests</span><br><span class="line">Completed 2400 requests</span><br><span class="line">Completed 2800 requests</span><br><span class="line">Completed 3200 requests</span><br><span class="line">Completed 3600 requests</span><br><span class="line">Completed 4000 requests</span><br><span class="line">Finished 4000 requests</span><br><span class="line"></span><br><span class="line">Server Software:        nginx/1.4.2</span><br><span class="line">Server Hostname:        192.168.35.2</span><br><span class="line">Server Port:            80</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        612 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      1000</span><br><span class="line">Time taken for tests:   3.279 seconds</span><br><span class="line">Complete requests:      4000</span><br><span class="line">Failed requests:        1343</span><br><span class="line">   (Connect: 0, Receive: 0, Length: 1343, Exceptions: 0)</span><br><span class="line">Write errors:           0</span><br><span class="line">Non-2xx responses:      1343</span><br><span class="line">Total transferred:      3131835 bytes</span><br><span class="line">HTML transferred:       2185044 bytes</span><br><span class="line">Requests per second:    1219.91 [#/sec] (mean)</span><br><span class="line">Time per request:       819.731 [ms] (mean)</span><br><span class="line">Time per request:       0.820 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          932.76 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:        1  329 463.5     72    1314</span><br><span class="line">Processing:    18  185 156.3    163    1433</span><br><span class="line">Waiting:        1  181 157.0    157    1433</span><br><span class="line">Total:         19  515 576.9    271    2594</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  50%    271</span><br><span class="line">  66%    373</span><br><span class="line">  75%   1026</span><br><span class="line">  80%   1085</span><br><span class="line">  90%   1679</span><br><span class="line">  95%   1767</span><br><span class="line">  98%   1848</span><br><span class="line">  99%   1855</span><br><span class="line"> 100%   2594 (longest request)</span><br></pre></td></tr></table></figure></p>
+<p>结果分析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">[root@vagrant-centos65 ~]# ab -n 4000 -c 1000 http://192.168.35.2/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking 192.168.35.2 (be patient)</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 1200 requests</span><br><span class="line">Completed 1600 requests</span><br><span class="line">Completed 2000 requests</span><br><span class="line">Completed 2400 requests</span><br><span class="line">Completed 2800 requests</span><br><span class="line">Completed 3200 requests</span><br><span class="line">Completed 3600 requests</span><br><span class="line">Completed 4000 requests</span><br><span class="line">Finished 4000 requests</span><br><span class="line"></span><br><span class="line"># 服务器软件版本</span><br><span class="line">Server Software:        nginx/1.4.2</span><br><span class="line"># hostname</span><br><span class="line">Server Hostname:        192.168.35.2</span><br><span class="line"># 端口</span><br><span class="line">Server Port:            80</span><br><span class="line"></span><br><span class="line"># 测试的页面</span><br><span class="line">Document Path:          /</span><br><span class="line"># 页面大小</span><br><span class="line">Document Length:        612 bytes</span><br><span class="line"></span><br><span class="line"># 测试的并发数</span><br><span class="line">Concurrency Level:      1000</span><br><span class="line"># 整个测试持续的时间</span><br><span class="line">Time taken for tests:   3.279 seconds</span><br><span class="line"># 完成的请求数量</span><br><span class="line">Complete requests:      4000</span><br><span class="line"># 失败的请求数量</span><br><span class="line">Failed requests:        1343</span><br><span class="line">   (Connect: 0, Receive: 0, Length: 1343, Exceptions: 0)</span><br><span class="line">Write errors:           0</span><br><span class="line">Non-2xx responses:      1343</span><br><span class="line"># 整个过程中的网络传输量</span><br><span class="line">Total transferred:      3131835 bytes</span><br><span class="line"># 整个过程中的HTML内容传输量</span><br><span class="line">HTML transferred:       2185044 bytes</span><br><span class="line"># 最重要的指标之一，每秒请求数，后面括号中的mean表示这是一个平均值</span><br><span class="line">Requests per second:    1219.91 [#/sec] (mean)</span><br><span class="line"># 最重要的指标之二，平均请求响应时间</span><br><span class="line">Time per request:       819.731 [ms] (mean)</span><br><span class="line"># 每个连接请求实际运行时间的平均值</span><br><span class="line">Time per request:       0.820 [ms] (mean, across all concurrent requests)</span><br><span class="line"># 平均每秒网络上的流量，可以帮助排除是否存在网络流量过大导致响应时间延长的问题</span><br><span class="line">Transfer rate:          932.76 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line"># 网络上消耗时间的分解</span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:        1  329 463.5     72    1314</span><br><span class="line">Processing:    18  185 156.3    163    1433</span><br><span class="line">Waiting:        1  181 157.0    157    1433</span><br><span class="line">Total:         19  515 576.9    271    2594</span><br><span class="line"></span><br><span class="line"># 整个场景中所有请求的响应时间占比。</span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  50%    271</span><br><span class="line">  66%    373</span><br><span class="line">  75%   1026</span><br><span class="line">  80%   1085</span><br><span class="line">  90%   1679</span><br><span class="line">  95%   1767</span><br><span class="line">  98%   1848</span><br><span class="line">  99%   1855</span><br><span class="line"> 100%   2594 (longest request)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="http://www.ha97.com/4617.html" target="_blank" rel="external">Web性能压力测试工具之ApacheBench（ab）详解</a></li>
+<li><a href="http://www.ilanni.com/?p=8348" target="_blank" rel="external">apache性能测试工具ab的应用</a></li>
+</ul>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2016/03/02/svn-server-install/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/10/22/gulb/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 吉吉博客 | 思考与成长 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

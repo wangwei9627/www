@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Redis 安装与使用 | 吉吉博客 | 思考与成长</title>
+  <meta name="description" content="自我管理|知识管理|时间管理|阅读" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="吉吉博客 | 思考与成长">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/05/04/swooleInstall/">swoole安装</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/13/C1/">C语言学习</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/09/21/git/">git的安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/02/redis/">Redis 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/22/nodejs/">安装nodejs</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/07/composer/">composer 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/03/23/markdown/">markdown</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/blog/">&nbsp;&nbsp;&nbsp;blog</a>
+                                    <small>16</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/linux/">&nbsp;&nbsp;&nbsp;linux</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C/">&nbsp;&nbsp;&nbsp;C</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Larave/">&nbsp;&nbsp;&nbsp;Larave</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Mysql数据库优化/">&nbsp;&nbsp;&nbsp;Mysql数据库优化</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/OpenResty/">&nbsp;&nbsp;&nbsp;OpenResty</a>
+                                    <small>3</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ab/">&nbsp;&nbsp;&nbsp;ab</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/composer/">&nbsp;&nbsp;&nbsp;composer</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/gulp/">&nbsp;&nbsp;&nbsp;gulp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/lnmp/">&nbsp;&nbsp;&nbsp;lnmp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/markdown/">&nbsp;&nbsp;&nbsp;markdown</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/redis/">&nbsp;&nbsp;&nbsp;redis</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/shell/">&nbsp;&nbsp;&nbsp;shell</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/svn/">&nbsp;&nbsp;&nbsp;svn</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/swoole/">&nbsp;&nbsp;&nbsp;swoole</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/vagrant/">&nbsp;&nbsp;&nbsp;vagrant</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/cuijiji">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                
+                    <a  data-pjax href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                
+                    <a  data-pjax href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                
+                    <a  data-pjax href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                
+                    <a  data-pjax href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                
+                    <a  data-pjax href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                
+                    <a  data-pjax href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                
+                    <a  data-pjax href="/2016/05/04/swooleInstall/">swoole安装</a>
+                
+                    <a  data-pjax href="/2016/03/13/C1/">C语言学习</a>
+                
+                    <a  data-pjax href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                
+                    <a  data-pjax href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                
+                    <a  data-pjax href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                
+                    <a  data-pjax href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                
+                    <a  data-pjax href="/2015/09/21/git/">git的安装与使用</a>
+                
+                    <a  data-pjax href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                
+                    <a  data-pjax href="/2015/08/02/redis/">Redis 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/06/22/nodejs/">安装nodejs</a>
+                
+                    <a  data-pjax href="/2015/06/07/composer/">composer 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/03/23/markdown/">markdown</a>
+                
+                
+                    <a data-pjax href="/categories/blog/">&nbsp;&nbsp;blog</a>
+                
+                    <a data-pjax href="/categories/linux/">&nbsp;&nbsp;linux</a>
+                
+                
+                    <a data-pjax href="/tags/C/">&nbsp;&nbsp;C</a>
+                
+                    <a data-pjax href="/tags/Larave/">&nbsp;&nbsp;Larave</a>
+                
+                    <a data-pjax href="/tags/Mysql数据库优化/">&nbsp;&nbsp;Mysql数据库优化</a>
+                
+                    <a data-pjax href="/tags/OpenResty/">&nbsp;&nbsp;OpenResty</a>
+                
+                    <a data-pjax href="/tags/ab/">&nbsp;&nbsp;ab</a>
+                
+                    <a data-pjax href="/tags/composer/">&nbsp;&nbsp;composer</a>
+                
+                    <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/gulp/">&nbsp;&nbsp;gulp</a>
+                
+                    <a data-pjax href="/tags/lnmp/">&nbsp;&nbsp;lnmp</a>
+                
+                    <a data-pjax href="/tags/markdown/">&nbsp;&nbsp;markdown</a>
+                
+                    <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
+                
+                    <a data-pjax href="/tags/redis/">&nbsp;&nbsp;redis</a>
+                
+                    <a data-pjax href="/tags/shell/">&nbsp;&nbsp;shell</a>
+                
+                    <a data-pjax href="/tags/svn/">&nbsp;&nbsp;svn</a>
+                
+                    <a data-pjax href="/tags/swoole/">&nbsp;&nbsp;swoole</a>
+                
+                    <a data-pjax href="/tags/vagrant/">&nbsp;&nbsp;vagrant</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">吉吉博客 | 思考与成长</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">Redis 安装与使用</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/redis/' style='color:#D5D5D5'>redis</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Redis 安装与使用</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-08-02T16:13:11.000Z"
+                              itemprop="datePublished">2015-08-02</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <hr>
+<h4 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么:"></a>redis是什么:</h4><blockquote>
+<p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.<br>redis是开源,BSD许可,高级的key-value存储系统.<br>可以用来存储字符串,哈希结构,链表,集合,因此,常用来提供数据结构服务.</p>
+</blockquote>
+<h4 id="redis和memcached相比独特之处"><a href="#redis和memcached相比独特之处" class="headerlink" title="redis和memcached相比独特之处:"></a>redis和memcached相比独特之处:</h4><blockquote>
+<p>1: redis可以用来做存储(storge), 而memccached是用来做缓存(cache)<br>这个特点主要因为其有”持久化”的功能.<br>2: 存储的数据有”结构”,对于memcached来说,存储的数据,只有1种类型–”字符串”,<br>而redis则可以存储字符串,链表,哈希结构,集合,有序集合.</p>
+</blockquote>
+<h4 id="Redis下载安装"><a href="#Redis下载安装" class="headerlink" title="Redis下载安装"></a>Redis下载安装</h4><p> 去官方网站<a href="http://redis.io/下载即可" target="_blank" rel="external">http://redis.io/下载即可</a></p>
+<pre><code>$ wget http://download.redis.io/releases/redis-3.0.7.tar.gz
+</code></pre><p> 然后进入目录解压</p>
+<pre><code>$ cd redis-3.0.7
+$ tar zxvf redis-3.0.7.tar.gz
+</code></pre><p> 启动并运行redis：</p>
+<pre><code>$ ./src/redis-server
+</code></pre><p> 打开另外一个终端运行，redis客户端</p>
+<pre><code>$ ./src/redis-cli
+</code></pre><p> 试着运行下面的代码</p>
+<pre><code>127.0.0.1:6379&gt; set name cuijiji
+
+OK
+
+127.0.0.1:6379&gt; get name
+
+&quot;cuijiji&quot;
+
+127.0.0.1:6379&gt;
+</code></pre><p> 恭喜你成功了！！！</p>
+<p>####Redis对于key的操作命令</p>
+<pre><code>del key1 key2 ... Keyn
+</code></pre><p>作用: 删除1个或多个键  返回值: 不存在的key忽略掉,返回真正删除的key的数量</p>
+<pre><code>rename key newkey
+</code></pre><p>作用: 给key赋一个新的key名 注:如果newkey已存在,则newkey的原值被覆盖</p>
+<pre><code>renamenx key newkey  
+</code></pre><p>作用: 把key改名为newkey 返回: 发生修改返回1,未发生修改返回0 注: nx–&gt; not exists, 即, newkey不存在时,作改名动作</p>
+<pre><code>move key db
+redis 127.0.0.1:6379[1]&gt; select 2
+OK
+redis 127.0.0.1:6379[2]&gt; keys *
+(empty list or set)
+redis 127.0.0.1:6379[2]&gt; select 0
+OK
+redis 127.0.0.1:6379&gt; keys *
+1) &quot;name&quot;
+2) &quot;cc&quot;
+3) &quot;a&quot;
+4) &quot;b&quot;
+redis 127.0.0.1:6379&gt; move cc 2
+(integer) 1
+redis 127.0.0.1:6379&gt; select 2
+OK
+redis 127.0.0.1:6379[2]&gt; keys *
+1) &quot;cc&quot;
+redis 127.0.0.1:6379[2]&gt; get cc
+&quot;3&quot;
+</code></pre><p>注意: 一个redis进程,打开了不止一个数据库, 默认打开16个数据库,从0到15编号,如果想打开更多数据库,可以从配置文件修改)</p>
+<h2 id="keys-pattern-查询相应的key"><a href="#keys-pattern-查询相应的key" class="headerlink" title="keys pattern 查询相应的key"></a>keys pattern 查询相应的key</h2><p>在redis里,允许模糊查询key有3个通配符 *, ? ,[]</p>
+<blockquote>
+<p>*: 通配任意多个字符</p>
+<p>?: 通配单个字符</p>
+<p>[]: 通配括号内的某1个字符</p>
+</blockquote>
+<pre><code>redis 127.0.0.1:6379&gt; flushdb
+OK
+redis 127.0.0.1:6379&gt; keys *
+(empty list or set)
+redis 127.0.0.1:6379&gt; mset one 1 two 2 three 3 four 4
+OK
+redis 127.0.0.1:6379&gt; keys o*
+1) &quot;one&quot;
+redis 127.0.0.1:6379&gt; key *o
+(error) ERR unknown command &apos;key&apos;
+redis 127.0.0.1:6379&gt; keys *o
+1) &quot;two&quot;
+redis 127.0.0.1:6379&gt; keys ???
+1) &quot;one&quot;
+2) &quot;two&quot;
+redis 127.0.0.1:6379&gt; keys on?
+1) &quot;one&quot;
+redis 127.0.0.1:6379&gt; set ons yes
+OK
+redis 127.0.0.1:6379&gt; keys on[eaw]
+1)&quot;one&quot;
+</code></pre><p>andomkey 返回随机key</p>
+<p>exists key</p>
+<blockquote>
+<p>判断key是否存在,返回1/0</p>
+</blockquote>
+<p>type key</p>
+<blockquote>
+<p>返回key存储的值的类型</p>
+<p>有string,link,set,order set, hash</p>
+</blockquote>
+<p>ttl key<br>&gt;</p>
+<blockquote>
+<p>作用: 查询key的生命周期</p>
+<p>返回: 秒数</p>
+</blockquote>
+<p>注:对于不存在的key或已过期的key/不过期的key,都返回-1 Redis2.8中,对于不存在的key,返回-2</p>
+<p>expire key 整型值<br>&gt;</p>
+<blockquote>
+<p>作用: 设置key的生命周期,以秒为单位</p>
+</blockquote>
+<p>同理:<br>&gt;</p>
+<blockquote>
+<p>pexpire key 毫秒数, 设置生命周期</p>
+<p>pttl  key, 以毫秒返回生命周期</p>
+</blockquote>
+<p>persist key</p>
+<blockquote>
+<p>作用: 把指定key置为永久有效</p>
+</blockquote>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2015/08/03/php-redis/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/06/22/nodejs/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 吉吉博客 | 思考与成长 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

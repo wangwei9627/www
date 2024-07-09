@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>gulp自动化构建工具 | 吉吉博客 | 思考与成长</title>
+  <meta name="description" content="自我管理|知识管理|时间管理|阅读" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="吉吉博客 | 思考与成长">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/05/04/swooleInstall/">swoole安装</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/13/C1/">C语言学习</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/09/21/git/">git的安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/08/02/redis/">Redis 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/22/nodejs/">安装nodejs</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/06/07/composer/">composer 安装与使用</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/03/23/markdown/">markdown</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/blog/">&nbsp;&nbsp;&nbsp;blog</a>
+                                    <small>16</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/linux/">&nbsp;&nbsp;&nbsp;linux</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C/">&nbsp;&nbsp;&nbsp;C</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Larave/">&nbsp;&nbsp;&nbsp;Larave</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Mysql数据库优化/">&nbsp;&nbsp;&nbsp;Mysql数据库优化</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/OpenResty/">&nbsp;&nbsp;&nbsp;OpenResty</a>
+                                    <small>3</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ab/">&nbsp;&nbsp;&nbsp;ab</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/composer/">&nbsp;&nbsp;&nbsp;composer</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/gulp/">&nbsp;&nbsp;&nbsp;gulp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/lnmp/">&nbsp;&nbsp;&nbsp;lnmp</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/markdown/">&nbsp;&nbsp;&nbsp;markdown</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/redis/">&nbsp;&nbsp;&nbsp;redis</a>
+                                    <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/shell/">&nbsp;&nbsp;&nbsp;shell</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/svn/">&nbsp;&nbsp;&nbsp;svn</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/swoole/">&nbsp;&nbsp;&nbsp;swoole</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/vagrant/">&nbsp;&nbsp;&nbsp;vagrant</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/cuijiji">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/08/11/lnmp/">快速搭建属于自己的lnmp</a>
+                
+                    <a  data-pjax href="/2016/07/25/mysql/">Mysql数据库优化</a>
+                
+                    <a  data-pjax href="/2016/07/01/shell/">shell介绍与定义变量</a>
+                
+                    <a  data-pjax href="/2016/06/25/laravel5.2error/">Larave中间件新特性与解决验证时出现的各种错误</a>
+                
+                    <a  data-pjax href="/2016/06/22/oprestyTwo/">OpenResty 之 Ngx lua API</a>
+                
+                    <a  data-pjax href="/2016/06/20/oprestyOne/">OpenResty入门</a>
+                
+                    <a  data-pjax href="/2016/06/18/oprestyImstall/">初识OpenResty</a>
+                
+                    <a  data-pjax href="/2016/05/04/swooleInstall/">swoole安装</a>
+                
+                    <a  data-pjax href="/2016/03/13/C1/">C语言学习</a>
+                
+                    <a  data-pjax href="/2016/03/08/vagrant-basic-use/">vagrant基本用法</a>
+                
+                    <a  data-pjax href="/2016/03/02/svn-server-install/">linux下svn服务器搭建</a>
+                
+                    <a  data-pjax href="/2016/02/19/performance-pressure-test-tools-ab/">性能压力测试工具ab</a>
+                
+                    <a  data-pjax href="/2015/10/22/gulb/">gulp自动化构建工具</a>
+                
+                    <a  data-pjax href="/2015/09/21/git/">git的安装与使用</a>
+                
+                    <a  data-pjax href="/2015/08/03/php-redis/">PHP编译Redis扩展</a>
+                
+                    <a  data-pjax href="/2015/08/02/redis/">Redis 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/06/22/nodejs/">安装nodejs</a>
+                
+                    <a  data-pjax href="/2015/06/07/composer/">composer 安装与使用</a>
+                
+                    <a  data-pjax href="/2015/03/23/markdown/">markdown</a>
+                
+                
+                    <a data-pjax href="/categories/blog/">&nbsp;&nbsp;blog</a>
+                
+                    <a data-pjax href="/categories/linux/">&nbsp;&nbsp;linux</a>
+                
+                
+                    <a data-pjax href="/tags/C/">&nbsp;&nbsp;C</a>
+                
+                    <a data-pjax href="/tags/Larave/">&nbsp;&nbsp;Larave</a>
+                
+                    <a data-pjax href="/tags/Mysql数据库优化/">&nbsp;&nbsp;Mysql数据库优化</a>
+                
+                    <a data-pjax href="/tags/OpenResty/">&nbsp;&nbsp;OpenResty</a>
+                
+                    <a data-pjax href="/tags/ab/">&nbsp;&nbsp;ab</a>
+                
+                    <a data-pjax href="/tags/composer/">&nbsp;&nbsp;composer</a>
+                
+                    <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/gulp/">&nbsp;&nbsp;gulp</a>
+                
+                    <a data-pjax href="/tags/lnmp/">&nbsp;&nbsp;lnmp</a>
+                
+                    <a data-pjax href="/tags/markdown/">&nbsp;&nbsp;markdown</a>
+                
+                    <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
+                
+                    <a data-pjax href="/tags/redis/">&nbsp;&nbsp;redis</a>
+                
+                    <a data-pjax href="/tags/shell/">&nbsp;&nbsp;shell</a>
+                
+                    <a data-pjax href="/tags/svn/">&nbsp;&nbsp;svn</a>
+                
+                    <a data-pjax href="/tags/swoole/">&nbsp;&nbsp;swoole</a>
+                
+                    <a data-pjax href="/tags/vagrant/">&nbsp;&nbsp;vagrant</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">吉吉博客 | 思考与成长</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">gulp自动化构建工具</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/gulp/' style='color:#D5D5D5'>gulp</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">gulp自动化构建工具</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-10-22T19:21:25.000Z"
+                              itemprop="datePublished">2015-10-22</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <hr>
+<h3 id="gulp自动化构建工具"><a href="#gulp自动化构建工具" class="headerlink" title="gulp自动化构建工具"></a>gulp自动化构建工具</h3><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</p>
+<h1 id="gulp能帮我们做什么"><a href="#gulp能帮我们做什么" class="headerlink" title="gulp能帮我们做什么?"></a>gulp能帮我们做什么?</h1><ul>
+<li>javascript语法的检测、合并，压缩。</li>
+<li>css的压缩、合并、sass/less的编译</li>
+<li>images的压缩、合并</li>
+<li>浏览器自动刷新</li>
+<li>部署文件生产替换</li>
+<li>监控文件变化并自动生产相应文件</li>
+</ul>
+<h1 id="gulp的安装"><a href="#gulp的安装" class="headerlink" title="gulp的安装"></a>gulp的安装</h1><p>gulp是基于Nodejs的自动任务运行器，这里默认已经安装了nodejs</p>
+<blockquote>
+<p>全局安装gulp</p>
+</blockquote>
+<pre><code>npm install --global gulp
+</code></pre><blockquote>
+<p>作为项目的开发依赖安装</p>
+</blockquote>
+<pre><code>npm install --save-dev gulp
+</code></pre><blockquote>
+<p>在项目根目录下创建名为gulpfile.js的文件</p>
+</blockquote>
+<pre><code>var gulp = require(&apos;gulp&apos;);
+
+gulp.task(&apos;default&apos;, function(){});
+</code></pre><blockquote>
+<p>运行gulp 安装完成</p>
+</blockquote>
+<pre><code>gulp -v
+
+gulp
+</code></pre><h2 id="正常安装完成会出现版本号以及执行默认任务"><a href="#正常安装完成会出现版本号以及执行默认任务" class="headerlink" title="正常安装完成会出现版本号以及执行默认任务"></a>正常安装完成会出现版本号以及执行默认任务</h2><blockquote>
+<p>依赖文件</p>
+</blockquote>
+<p> 别忘记在项目的根目录下还应该建相应的资源依赖文件package.json文件，它只是一个普通的json文件(但是不可以写注释)，但是对项目来说，不可或缺，里面不仅存在项目的具体描述信息，还存有项目所需要的包依赖，使用它可以记录相关的gulp插件，以便多人开始时协同使用，另外也可以指令建立：</p>
+<pre><code>npm init
+</code></pre><h1 id="gulp原理"><a href="#gulp原理" class="headerlink" title="gulp原理"></a>gulp原理</h1><p>  在实现上，glup借鉴了Unix操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。但是需要注意的是，gulp运行的过程中不会产生临时文件，所有的文件都是虚拟的，直到指定相应目录进行输出。</p>
+<h1 id="gulp函数"><a href="#gulp函数" class="headerlink" title="gulp函数"></a>gulp函数</h1><h2 id="gulp-src"><a href="#gulp-src" class="headerlink" title="gulp.src()"></a>gulp.src()</h2><p>gulp.src()方法输入一个glob(比如匹配一个或多个文件的字符串)或者glob数组，然后返回一个可以传递给插件的数据流。</p>
+<p>Gulp使用node-glob来从你指定的glob里面获取文件,主要匹配规则有以下规则（以js为例）</p>
+<ul>
+<li>js/app.js 精确匹配文件</li>
+<li>js/*.js 仅匹配js目录下的所有后缀为.js的文件</li>
+<li>js/*/.js 匹配js目录及其子目录下所有后缀为.js的文件</li>
+<li>!js/app.js 从匹配结果中排除js/app.js，这种方法在你想要匹配除了特殊文件之外的所有文件时非常管用</li>
+<li>*.+(js|css) 匹配根目录下所有后缀为.js或者.css的文件</li>
+</ul>
+<h2 id="gulp-task"><a href="#gulp-task" class="headerlink" title="gulp.task()"></a>gulp.task()</h2><p>gulp.task()函数通常会被用来定义任务。当你定义一个简单的任务时，需要传入任务名字和执行函数两个属性。</p>
+<pre><code>gulp.task(&apos;greet&apos;, function () {
+       console.log(&apos;Hello world!&apos;);
+});
+</code></pre><p>一个任务有时也可以是一系列任务。假设要定义一个任务build来执行css、js、imgs这三个任务，我们可以通过指定一个任务数组而不是函数来完成。</p>
+<pre><code>gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;imgs&apos;]);
+</code></pre><p>这些任务不是同时进行的，所以你不能认为在js任务开始的时候css任务已经结束了，也可能还没有结束。为了确保一个任务在另一个任务执行前已经结束，可以将函数和任务数组结合起来指定其依赖关系。例如，定义一个css任务，在执行前需要检查greet任务是否已经执行完毕，这样做就是可行的:</p>
+<pre><code>gulp.task(&apos;css&apos;, [&apos;greet&apos;], function () { });
+</code></pre><p>现在，当执行css任务时，Gulp会先执行greet任务，然后在它结束后再调用你定义的函数。</p>
+<p>你可以定义一个在gulp开始运行时候默认执行的任务，并将这个任务命名为“default”：</p>
+<pre><code>gulp.task(&apos;default&apos;, function () { });
+</code></pre><h2 id="gulp-dest"><a href="#gulp-dest" class="headerlink" title="gulp.dest()"></a>gulp.dest()</h2><p>gulp.dest()方法是用来写文件的，他将经过gulp处理的文件输出到相应目录</p>
+<pre><code>var gulp = reruire(&apos;gulp&apos;);
+gulp.src(&apos;script/**/*.js&apos;)
+    .pipe(gulp.dest(&apos;dist&apos;));
+</code></pre><h2 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch()"></a>gulp.watch()</h2><p>gulp.watch()用来监视文件的变化，当文件发生变化后，我们可以利用它来执行相应的任务，例如文件压缩等</p>
+<pre><code>gulp.watch(glob[, opts], tasks)
+</code></pre><p>Gulp可以监听文件的修改动态，然后在文件被改动的时候执行一个或多个任务。这个特性十分有用（对我来说，这可能是Gulp中最有用的一个功能）。你可以保存LESS文件，接着Gulp会自动把它转换为CSS文件并更新浏览器。</p>
+<p>使用gulp.watch()方法可以监听文件，它接受一个glob或者glob数组（和gulp.src()一样）以及一个任务数组来执行回调。</p>
+<p>让我们看看下面，build任务可以将模板转换成html格式，然后我们希望定义一个watch任务来监听模板文件的变化，并将这些模板转换成html格式。watch函数的使用方法如下所示：</p>
+<pre><code>gulp.task(&apos;watch&apos;, function () {
+       gulp.watch(&apos;templates/*.tmpl.html&apos;, [&apos;build&apos;]);
+});
+</code></pre><p>现在，当改变一个模板文件时，build任务会被执行并生成HTML文件，也可以给watch函数一个回调函数，而不是一个任务数组。在这个示例中，回调函数有一个包含触发回调函数信息的event对象：</p>
+<pre><code>gulp.watch(&apos;templates/*.tmpl.html&apos;, function (event) {
+       console.log(&apos;Event type: &apos; + event.type); // added, changed, or deleted
+       console.log(&apos;Event path: &apos; + event.path); // The path of the modified file
+});
+</code></pre><p>Gulp.watch()的另一个非常好的特性是返回我们熟知的watcher。利用watcher来监听额外的事件或者向watch中添加文件。例如，在执行一系列任务和调用一个函数时，你就可以在返回的watcher中添加监听change事件:</p>
+<pre><code>var watcher = gulp.watch(&apos;templates/*.tmpl.html&apos;, [&apos;build&apos;]);
+    watcher.on(&apos;change&apos;, function (event) {
+       console.log(&apos;Event type: &apos; + event.type); // added, changed, or deleted
+       console.log(&apos;Event path: &apos; + event.path); // The path of the modified file
+});
+</code></pre><p>除了change事件，还可以监听很多其他的事件:</p>
+<ul>
+<li>end 在watcher结束时触发（这意味着，在文件改变的时候，任务或者回调不会执行）</li>
+<li>error 在出现error时触发</li>
+<li>ready 在文件被找到并正被监听时触发</li>
+<li>nomatch 在glob没有匹配到任何文件时触发</li>
+<li><p>Watcher对象也包含了一些可以调用的方法：</p>
+</li>
+<li><p>watcher.end() 停止watcher（以便停止执行后面的任务或者回调函数）</p>
+</li>
+<li>watcher.files() 返回watcher监听的文件列表</li>
+<li>watcher.add(glob) 将与指定glob相匹配的文件添加到watcher（也接受可选的回调当第二个参数）</li>
+<li>watcher.remove(filepath) 从watcher中移除个别文件</li>
+</ul>
+<h1 id="gulp常用插件"><a href="#gulp常用插件" class="headerlink" title="gulp常用插件"></a>gulp常用插件</h1><blockquote>
+<p>js语法检测</p>
+</blockquote>
+<pre><code>var jshint = require(&quot;gulp-jshint&quot;),
+</code></pre><blockquote>
+<p>js压缩</p>
+</blockquote>
+<pre><code>var uglify = require(&quot;gulp-uglify&quot;),
+</code></pre><blockquote>
+<p>css压缩</p>
+</blockquote>
+<pre><code>var minifycss = require(&quot;gulp-minify-css&quot;),
+</code></pre><blockquote>
+<p>sass编译</p>
+</blockquote>
+<pre><code>var sass = require(&quot;gulp-ruby-sass&quot;),
+</code></pre><blockquote>
+<p>图片压缩</p>
+</blockquote>
+<pre><code>var imagemin = require(&quot;gulp-imagemin&quot;)
+</code></pre><blockquote>
+<p>雪碧图合并</p>
+</blockquote>
+<pre><code>var spriter = require(&quot;gulp-css-spriter&quot;)
+</code></pre><blockquote>
+<p>js、css的合并</p>
+</blockquote>
+<pre><code>var concat = require(&quot;gulp-concat&quot;)
+</code></pre><blockquote>
+<p>文件重命名</p>
+</blockquote>
+<pre><code>var rename = require(&quot;gulp-rename&quot;)
+</code></pre><blockquote>
+<p>MD5戳</p>
+</blockquote>
+<pre><code>var md5 = require(&quot;gulp-rev&quot;)
+</code></pre><blockquote>
+<p>路径替换</p>
+</blockquote>
+<pre><code>var collector = require(&quot;gulp-rev-collector&quot;) 
+</code></pre><blockquote>
+<p>刷新浏览器</p>
+</blockquote>
+<pre><code>var reload = require(&quot;gulp-livereload&quot;)
+</code></pre><p>以上这些就是gulp常用的插件，至于安装以及其中的用法，这里不做一一介绍，有兴趣的朋友自行研究即可。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>gulp作为前端的开发的自动化构建工具，确实帮我们完成了很多必要的工作，相对于其他前端构建工具运行速度快，一直为gulp所骄傲，但是同时由于项目的复杂性，以及认为的灵活性，gulp有时也会遇到瓶颈，建议可以参考参考其它构建工具，诸于fis等。</p>
+<p>（gulp的几大函数基本参数是必须掌握的，其中还有一些不常用的参数配置，这里不一一介绍，在项目中进行锻炼时可以慢慢体会）</p>
+<p>下面是gulp的两个参考网站：</p>
+<ul>
+<li><p><a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp中文网</a></p>
+</li>
+<li><p><a href="http://www.w3cplus.com/blog/tags/528.html" target="_blank" rel="external">gulp系列教程</a></p>
+</li>
+</ul>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2016/02/19/performance-pressure-test-tools-ab/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/09/21/git/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 吉吉博客 | 思考与成长 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
